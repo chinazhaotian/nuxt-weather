@@ -1,0 +1,77 @@
+{
+    "error": 0,
+    "status": "success",
+    "date": "2018-07-05",
+    "results": [
+        {
+            "currentCity": "北京",
+            "pm25": "113",
+            "index": [
+                {
+                    "des": "天气炎热，建议着短衫、短裙、短裤、薄型T恤衫等清凉夏季服装。",
+                    "zs": "炎热",
+                    "tipt": "穿衣指数",
+                    "title": "穿衣"
+                },
+                {
+                    "des": "不宜洗车，未来24小时内有雨，如果在此期间洗车，雨水和路上的泥水可能会再次弄脏您的爱车。",
+                    "zs": "不宜",
+                    "tipt": "洗车指数",
+                    "title": "洗车"
+                },
+                {
+                    "des": "各项气象条件适宜，发生感冒机率较低。但请避免长期处于空调房间中，以防感冒。",
+                    "zs": "少发",
+                    "tipt": "感冒指数",
+                    "title": "感冒"
+                },
+                {
+                    "des": "天气较好，无雨水困扰，但考虑气温很高，请注意适当减少运动时间并降低运动强度，运动后及时补充水分。",
+                    "zs": "较不宜",
+                    "tipt": "运动指数",
+                    "title": "运动"
+                },
+                {
+                    "des": "属中等强度紫外线辐射天气，外出时建议涂擦SPF高于15、PA+的防晒护肤品，戴帽子、太阳镜。",
+                    "zs": "中等",
+                    "tipt": "紫外线强度指数",
+                    "title": "紫外线强度"
+                }
+            ],
+            "weather_data": [
+                {
+                    "date": "周四 07月05日 (实时：31℃)",
+                    "dayPictureUrl": "http://api.map.baidu.com/images/weather/day/duoyun.png",
+                    "nightPictureUrl": "http://api.map.baidu.com/images/weather/night/leizhenyu.png",
+                    "weather": "多云转雷阵雨",
+                    "wind": "东南风微风",
+                    "temperature": "37 ~ 24℃"
+                },
+                {
+                    "date": "周五",
+                    "dayPictureUrl": "http://api.map.baidu.com/images/weather/day/duoyun.png",
+                    "nightPictureUrl": "http://api.map.baidu.com/images/weather/night/leizhenyu.png",
+                    "weather": "多云转雷阵雨",
+                    "wind": "东南风3-4级",
+                    "temperature": "33 ~ 23℃"
+                },
+                {
+                    "date": "周六",
+                    "dayPictureUrl": "http://api.map.baidu.com/images/weather/day/leizhenyu.png",
+                    "nightPictureUrl": "http://api.map.baidu.com/images/weather/night/leizhenyu.png",
+                    "weather": "雷阵雨",
+                    "wind": "东南风3-4级",
+                    "temperature": "31 ~ 23℃"
+                },
+                {
+                    "date": "周日",
+                    "dayPictureUrl": "http://api.map.baidu.com/images/weather/day/leizhenyu.png",
+                    "nightPictureUrl": "http://api.map.baidu.com/images/weather/night/leizhenyu.png",
+                    "weather": "雷阵雨",
+                    "wind": "东北风微风",
+                    "temperature": "27 ~ 20℃"
+                }
+            ]
+        }
+    ]
+}
