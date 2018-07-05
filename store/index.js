@@ -6,7 +6,8 @@ Vue.use(Vuex)
 const store = () => new Vuex.Store({
   state: {
     city: null,
-    nowCity: null
+    nowCity: null,
+    maskShow: true
   },
   getters: {
     getCity (state) {
@@ -14,6 +15,9 @@ const store = () => new Vuex.Store({
     },
     getNowCity (state) {
       return state.nowCity
+    },
+    getMask (state) {
+      return state.maskShow
     }
   },
   mutations: {
@@ -22,6 +26,9 @@ const store = () => new Vuex.Store({
     },
     setNowCity (state, item) {
       state.nowCity = item
+    },
+    setMask (state, item) {
+      state.maskShow = item
     }
   }
 })

@@ -3,16 +3,18 @@
   <section class="container">
     <Header></Header>
     <div class="searchCity">
-      <nuxt-link to="/second">
-        <span class="icon-search">查询其他城市</span>
-      </nuxt-link>
+        <span class="icon-search"></span>
+        <input type="text" class="input" placeholder="查询其他城市" v-model="inputCity" @keyup.13="searchWeather">
     </div>
     <div class="cityname">
+      <nuxt-link to="/second">
       {{getNowCity?getNowCity:'请选择城市'}}
+      </nuxt-link>
     </div>
     <Middle :weatherInfo="info" :pm25="pm25"></Middle>
     <Week :weekInfo="info"></Week>
     <Sport :sport="sport"></Sport>
+    <Masks></Masks>
   </section>
   </div>
 </template>
@@ -22,6 +24,7 @@ import Header from '~/components/header.vue'
 import Middle from '~/components/middle.vue'
 import Week from '~/components/week.vue'
 import Sport from '~/components/sport.vue'
+import Masks from '~/components/mask.vue'
 import Citys from '~/assets/city.js'
 import axios from 'axios'
 import Weather from '~/assets/weather.json'
@@ -33,14 +36,16 @@ export default {
       citys: null,
       info: null,
       pm25: null,
-      sport: null
+      sport: null,
+      inputCity: ''
     }
   },
   components: {
     Header,
     Middle,
     Week,
-    Sport
+    Sport,
+    Masks
   },
   created: function () {
     var self = this
@@ -57,6 +62,9 @@ export default {
     ])
   },
   methods: {
+    ...mapMutations({
+      setNowCity: 'setNowCity'
+    }),
     getweather: function () {
       var self = this
       var location = encodeURIComponent(this.getNowCity)
@@ -76,6 +84,28 @@ export default {
         })
         .catch(function (error) {
           console.log(error);
+        });
+    },
+    searchWeather: function () {
+      var self = this
+      var url = `http://api.map.baidu.com/telematics/v3/weather?output=json&ak=uetU0z8dr9voL8pGFKmoYol6ib0ctFyB&location=${location}`
+      axios.get('/api',{
+        params: {
+          output: 'json',
+          ak: 'uetU0z8dr9voL8pGFKmoYol6ib0ctFyB',
+          location: self.inputCity
+        }
+      })
+        .then(function (res) {
+          self.info = res.data.results[0].weather_data || ''
+          self.pm25 = res.data.results[0].pm25 || ''
+          self.sport = res.data.results[0].index || ''
+          self.setNowCity(self.inputCity)
+          self.inputCity = ''
+        })
+        .catch(function (error) {
+          alert('请输入一个你知道,我也知道的地名');
+          self.inputCity = ''
         });
     },
     _getCity: function () {
@@ -137,24 +167,39 @@ export default {
     text-align: left;
     box-sizing: content-box;
     padding-bottom: 5px;
+    display: flex;
+    float: 1;
   }
   .searchCity a {
     display: inline-block;
     width: 100%;
     text-decoration: none;
   }
+  .input {
+    background: #40a7e7;
+    border:none;
+    outline: 0;
+    height: 20px;
+    width: 100%;
+    padding-left: 5px;
+    color: #fff;
+  }
+  .input::-webkit-input-placeholder {
+    color: #fff;
+  }
   .icon-search {
-    width: 50%;
+    width: 20px;
     height: 20px;
     display: inline-block;
-    padding-left: 20px;
     box-sizing: border-box;
     color: #fff;
-    background: url("https://image.kmeila.com/c54a09f3c55e3ddf0d5de06cab19b32e_16x16.png") no-repeat left center;
+    background: url("https://image.kmeila.com/c54a09f3c55e3ddf0d5de06cab19b32e_16x16.png") no-repeat center center;
     background-size: 16px 16px;
   }
-  .cityname {
+  .cityname a{
     color: #fff;
     margin-top:20px;
+    display: inline-block;
+    text-decoration: none;
   }
 </style>
