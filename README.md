@@ -52,6 +52,8 @@
     # 上传 .nuxt package.json package-lock.json 等文件
   ```
   # 启动项目
-  > 1.npm install 安装依赖包文件
-  > 2.nuxt start
-  > 3.pm2 start npm -- start  pm2 守护进程
+  ``` bash
+  # 1.npm install 安装依赖包文件
+  # 2.nuxt start
+  # 3.pm2 start npm -- start  pm2 守护进程
+  ```
